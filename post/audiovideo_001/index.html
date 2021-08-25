@@ -43,12 +43,12 @@
 <meta property="og:description" content="视音频技术主要包括以下几点：视频压缩编码技术、音频压缩编码技术、封装技术以及 网络流媒体协议传输技术。 以音视频播放器中的数据的处理流程为基础，" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://knightwfy.github.io/post/audiovideo_001/" />
-<meta property="article:published_time" content="2021-05-24T23:24:11+08:00" />
-<meta property="article:modified_time" content="2021-05-24T23:24:11+08:00" />
+<meta property="article:published_time" content="2021-08-24T23:24:11+08:00" />
+<meta property="article:modified_time" content="2021-08-24T23:24:11+08:00" />
 <meta itemprop="name" content="《音视频学习基础》（一） 音视频数据处理流程浅析">
 <meta itemprop="description" content="视音频技术主要包括以下几点：视频压缩编码技术、音频压缩编码技术、封装技术以及 网络流媒体协议传输技术。 以音视频播放器中的数据的处理流程为基础，">
-<meta itemprop="datePublished" content="2021-05-24T23:24:11&#43;08:00" />
-<meta itemprop="dateModified" content="2021-05-24T23:24:11&#43;08:00" />
+<meta itemprop="datePublished" content="2021-08-24T23:24:11&#43;08:00" />
+<meta itemprop="dateModified" content="2021-08-24T23:24:11&#43;08:00" />
 <meta itemprop="wordCount" content="1096">
 
 
@@ -131,7 +131,7 @@
       <h1 class="post-title">《音视频学习基础》（一） 音视频数据处理流程浅析</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2021-05-24 </span>
+        <span class="post-time"> 2021-08-24 </span>
         
         
       </div>
@@ -146,13 +146,13 @@
     <div class="post-content">
       <p>视音频技术主要包括以下几点：视频压缩编码技术、音频压缩编码技术、封装技术以及 网络流媒体协议传输技术。</p>
 <p>以音视频播放器中的数据的处理流程为基础，探究音视频的处理流程。如播放网络传输的音视频数据主要经过以下几个步骤，协议解析、解封装、音视频解码、音视频同步。如果播放本地文件，则不需要经过协议解析流程。只需要解封装，音视频解码、音视频同步。流程如下图所示。</p>
-<p><img src="https://i.loli.net/2021/05/23/nM4LHJKp73azAmC.png" alt="音视频处理数据流.png"></p>
+<p><img src="/img/nM4LHJKp73azAmC.png" alt="音视频处理数据流.png"></p>
 <p><strong>协议解析</strong>：就是将网络传输过程中接收到的流媒体协议数据，按照相应的流媒体协议格式，解析出对应的音视频封装格式数据。音视频在网络上传输的时候，通常都会使用各种流媒体协议格式，例如<a href="https://en.wikipedia.org/wiki/Real-time_Transport_Protocol">RTP</a>、<a href="https://en.wikipedia.org/wiki/RTP_Control_Protocol">RTCP</a>、<a href="https://en.wikipedia.org/wiki/Secure_Real-time_Transport_Protocol">SRTP/SRTCP</a>、<a href="https://en.wikipedia.org/wiki/Real_Time_Streaming_Protocol">RTSP</a>、<a href="https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol">RTMP</a>、<a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a>、<a href="https://en.wikipedia.org/wiki/HTTP_Live_Streaming">HLS</a>、<a href="https://en.wikipedia.org/wiki/Multimedia_Messaging_Service">MMS</a>、<a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol">SIP</a>等等。这些协议在传输音视频数据的同时，也会传输一些信令数据。这些信令数据包括对播放的控制（播放、暂停、停止），或者对网络状态的描述等。在协议解析的过程中会将与音视频数据无关的信息去除，只保留封装好的音视频数据。</p>
 <p><strong>封装格式（容器）解析</strong>：就是把输入的封装格式的数据进行解析，将音频压缩编码数据和视频压缩编码数据分离。常见的封装格式有<a href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a>、<a href="https://en.wikipedia.org/wiki/Audio_Video_Interleave">AVI</a>、<a href="https://en.wikipedia.org/wiki/MPEG_transport_stream">MPEG-TS</a>、<a href="https://en.wikipedia.org/wiki/MPEG_program_stream">MPEG-PS</a>、<a href="https://en.wikipedia.org/wiki/Flash_Video">FLV</a>、<a href="https://en.wikipedia.org/wiki/Matroska">MKV</a>、<a href="https://en.wikipedia.org/wiki/RMVB">RMVB</a>、<a href="https://en.wikipedia.org/wiki/Advanced_Systems_Format">ASF</a>、<a href="https://en.wikipedia.org/wiki/Windows_Media_Video">WMV</a>、<a href="https://en.wikipedia.org/wiki/3GP_and_3G2">3GP</a>等。它的作用就是将已经压缩编码的音频数据和视频数据按照一定的格式封装到一起。如FLV格式的数据，经过解封装后的输出的是H.264编码的视频码流和AAC编码的音频码流。</p>
 <p><strong>解码</strong>：就是将视频/音频压缩编码数据，按照封装格式解析过程中获取的压缩编码参数。按照相应的压缩编码标准。将视频/音频压缩编码数据，解码成为非压缩的视频/音频原始数据。音频的压缩编码标准包括<a href="https://en.wikipedia.org/wiki/Opus_(audio_format)">OPUS</a>、<a href="https://en.wikipedia.org/wiki/Advanced_Audio_Coding">AAC</a>、<a href="https://en.wikipedia.org/wiki/MP3">MP3</a>等等。视频的压缩编码标准包括<a href="https://en.wikipedia.org/wiki/Advanced_Video_Coding">H.264/AVC</a>、<a href="https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding">H.265/HEVC</a>等等。解码是整个视音频处理过程中最重要也是最复杂的一个环节。通过解码，压缩的视频数据输出为非压缩的颜色数据。如YUV、RGB等等。压缩编码的音频数据输出为非压缩的音频采样数据，如PCM数据等等。</p>
 <p><strong>音视频同步</strong>：就是根据封装格式解析过程中获取到的音视频参数信息（如音频采样率，视频帧率、同步时间戳等），同步解码出来的视频和音频数据。并将音频视频数据送到系统的声卡和显卡中播放出来。</p>
 <p>相应的，对于音视频数据采集和发送的过程，和音视频播放的过程相似。主要经过采集、编码压缩、封装、流媒体协议传输几个过程。流程如下图所示。</p>
-<p><img src="https://i.loli.net/2021/05/24/AXeQ3BSoisHyb82.png" alt="音视频处理数据流.png"></p>
+<p><img src="/img/AXeQ3BSoisHyb82.png" alt="音视频处理数据流.png"></p>
 <p>接下来，我们将根据音视频处理流程，去学习音频视频处理过程各个阶段的相关知识。了解音频视频的基本格式，各种编码压缩标准、封装格式以及流媒体传输协议。</p>
 <hr>
 <p><em>作为音视频处理的开篇，希望能够坚持学习下去。与诸君共勉！</em></p>
@@ -167,7 +167,7 @@
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-        2021-05-24
+        2021-08-24
         
     </span>
   </p>
