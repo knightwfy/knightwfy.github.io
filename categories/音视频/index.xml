@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>音视频 on Even - A super concise theme for Hugo</title>
+    <link>http://knightwfy.github.io/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/</link>
+    <description>Recent content in 音视频 on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 24 Aug 2021 23:24:11 +0800</lastBuildDate>
+    
+	<atom:link href="http://knightwfy.github.io/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>《音视频学习基础》（一） 音视频数据处理流程浅析</title>
+      <link>http://knightwfy.github.io/post/av/audiovideo_001/</link>
+      <pubDate>Tue, 24 Aug 2021 23:24:11 +0800</pubDate>
+      
+      <guid>http://knightwfy.github.io/post/av/audiovideo_001/</guid>
+      <description>视音频技术主要包括以下几点：视频压缩编码技术、音频压缩编码技术、封装技术以及 网络流媒体协议传输技术。 一、音视频数据的接收和播放 以音视频播放器</description>
+    </item>
+    
+  </channel>
+</rss>
