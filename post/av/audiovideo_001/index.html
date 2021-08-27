@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《音视频学习基础》（一） 音视频数据处理流程浅析 - knightwfy&#39;s Personal blog!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="knightwfy" /><meta name="description" content="视音频技术主要包括以下几点：视频压缩编码技术、音频压缩编码技术、封装技术以及 网络流媒体协议传输技术。 一、音视频数据的接收和播放 以音视频播放器" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="http://knightwfy.github.io/post/av/audiovideo_001/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="《音视频学习基础》（一） 音视频数据处理流程浅析" />
+<meta property="og:description" content="视音频技术主要包括以下几点：视频压缩编码技术、音频压缩编码技术、封装技术以及 网络流媒体协议传输技术。 一、音视频数据的接收和播放 以音视频播放器" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://knightwfy.github.io/post/av/audiovideo_001/" />
+<meta property="article:published_time" content="2021-08-24T23:24:11+08:00" />
+<meta property="article:modified_time" content="2021-08-24T23:24:11+08:00" />
+<meta itemprop="name" content="《音视频学习基础》（一） 音视频数据处理流程浅析">
+<meta itemprop="description" content="视音频技术主要包括以下几点：视频压缩编码技术、音频压缩编码技术、封装技术以及 网络流媒体协议传输技术。 一、音视频数据的接收和播放 以音视频播放器">
+<meta itemprop="datePublished" content="2021-08-24T23:24:11&#43;08:00" />
+<meta itemprop="dateModified" content="2021-08-24T23:24:11&#43;08:00" />
+<meta itemprop="wordCount" content="1122">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《音视频学习基础》（一） 音视频数据处理流程浅析"/>
+<meta name="twitter:description" content="视音频技术主要包括以下几点：视频压缩编码技术、音频压缩编码技术、封装技术以及 网络流媒体协议传输技术。 一、音视频数据的接收和播放 以音视频播放器"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《音视频学习基础》（一） 音视频数据处理流程浅析</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-08-24 </span>
+        <div class="post-category">
+            <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/"> 音视频 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#一音视频数据的接收和播放">一、音视频数据的接收和播放</a></li>
+        <li><a href="#二音视频数据的采集和发送">二、音视频数据的采集和发送</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>视音频技术主要包括以下几点：视频压缩编码技术、音频压缩编码技术、封装技术以及 网络流媒体协议传输技术。</p>
+<h2 id="一音视频数据的接收和播放">一、音视频数据的接收和播放</h2>
+<p>以音视频播放器中的数据的处理流程为基础，探究音视频的处理流程。如播放网络传输的音视频数据主要经过以下几个步骤，协议解析、解封装、音视频解码、音视频同步。如果播放本地文件，则不需要经过协议解析流程。只需要解封装，音视频解码、音视频同步。流程如下图所示。</p>
+<p><img src="/img/nM4LHJKp73azAmC.png" alt="音视频处理数据流.png"></p>
+<p><strong>协议解析</strong>：就是将网络传输过程中接收到的流媒体协议数据，按照相应的流媒体协议格式，解析出对应的音视频封装格式数据。音视频在网络上传输的时候，通常都会使用各种流媒体协议格式，例如<a href="https://en.wikipedia.org/wiki/Real-time_Transport_Protocol">RTP</a>、<a href="https://en.wikipedia.org/wiki/RTP_Control_Protocol">RTCP</a>、<a href="https://en.wikipedia.org/wiki/Secure_Real-time_Transport_Protocol">SRTP/SRTCP</a>、<a href="https://en.wikipedia.org/wiki/Real_Time_Streaming_Protocol">RTSP</a>、<a href="https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol">RTMP</a>、<a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a>、<a href="https://en.wikipedia.org/wiki/HTTP_Live_Streaming">HLS</a>、<a href="https://en.wikipedia.org/wiki/Multimedia_Messaging_Service">MMS</a>、<a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol">SIP</a>等等。这些协议在传输音视频数据的同时，也会传输一些信令数据。这些信令数据包括对播放的控制（播放、暂停、停止），或者对网络状态的描述等。在协议解析的过程中会将与音视频数据无关的信息去除，只保留封装好的音视频数据。</p>
+<p><strong>封装格式（容器）解析</strong>：就是把输入的封装格式的数据进行解析，将音频压缩编码数据和视频压缩编码数据分离。常见的封装格式有<a href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a>、<a href="https://en.wikipedia.org/wiki/Audio_Video_Interleave">AVI</a>、<a href="https://en.wikipedia.org/wiki/MPEG_transport_stream">MPEG-TS</a>、<a href="https://en.wikipedia.org/wiki/MPEG_program_stream">MPEG-PS</a>、<a href="https://en.wikipedia.org/wiki/Flash_Video">FLV</a>、<a href="https://en.wikipedia.org/wiki/Matroska">MKV</a>、<a href="https://en.wikipedia.org/wiki/RMVB">RMVB</a>、<a href="https://en.wikipedia.org/wiki/Advanced_Systems_Format">ASF</a>、<a href="https://en.wikipedia.org/wiki/Windows_Media_Video">WMV</a>、<a href="https://en.wikipedia.org/wiki/3GP_and_3G2">3GP</a>等。它的作用就是将已经压缩编码的音频数据和视频数据按照一定的格式封装到一起。如FLV格式的数据，经过解封装后的输出的是H.264编码的视频码流和AAC编码的音频码流。</p>
+<p><strong>解码</strong>：就是将视频/音频压缩编码数据，按照封装格式解析过程中获取的压缩编码参数。按照相应的压缩编码标准。将视频/音频压缩编码数据，解码成为非压缩的视频/音频原始数据。音频的压缩编码标准包括<a href="https://en.wikipedia.org/wiki/Opus_(audio_format)">OPUS</a>、<a href="https://en.wikipedia.org/wiki/Advanced_Audio_Coding">AAC</a>、<a href="https://en.wikipedia.org/wiki/MP3">MP3</a>等等。视频的压缩编码标准包括<a href="https://en.wikipedia.org/wiki/Advanced_Video_Coding">H.264/AVC</a>、<a href="https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding">H.265/HEVC</a>等等。解码是整个视音频处理过程中最重要也是最复杂的一个环节。通过解码，压缩的视频数据输出为非压缩的颜色数据。如YUV、RGB等等。压缩编码的音频数据输出为非压缩的音频采样数据，如PCM数据等等。</p>
+<p><strong>音视频同步</strong>：就是根据封装格式解析过程中获取到的音视频参数信息（如音频采样率，视频帧率、同步时间戳等），同步解码出来的视频和音频数据。并将音频视频数据送到系统的声卡和显卡中播放出来。</p>
+<h2 id="二音视频数据的采集和发送">二、音视频数据的采集和发送</h2>
+<p>相应的，对于音视频数据采集和发送的过程，和音视频播放的过程相似。主要经过采集、编码压缩、封装、流媒体协议传输几个过程。流程如下图所示。</p>
+<p><img src="/img/AXeQ3BSoisHyb82.png" alt="音视频处理数据流.png"></p>
+<p>接下来，我们将根据音视频处理流程，去学习音频视频处理过程各个阶段的相关知识。了解音频视频的基本格式，各种编码压缩标准、封装格式以及流媒体传输协议。</p>
+<hr>
+<p><em>作为音视频处理的开篇，希望能够坚持学习下去。与诸君共勉！</em></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">knightwfy</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2021-08-24
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>knightwfy</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
